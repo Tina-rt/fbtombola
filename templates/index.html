@@ -19,11 +19,18 @@
         </div>
     </nav>
 
+    <div class="container">
+        <p class="description">
+            Collez le lien de votre publication facebook ci-dessous <br>
+            <i>Notez que cette app requiert une publication public venant d'une page </i>
+        </p>
+    </div>
+
     <div class="container form-article">
         <div class="form">
             <form action="/tirage">
-                <input type="text" name="post_url" id="post_url" class="form-control" placeholder="Url de votre publication">
-                <input type="text" name="answer" id="answer" class="form-control" placeholder="Un mot contenue dans la vraie réponse">
+                <input type="text" autocomplete="false" name="post_url" id="post_url" class="form-control" placeholder="Url de votre publication">
+                <input type="text" name="answer" autocomplete="false" id="answer" class="form-control" placeholder="Un mot contenue dans la vraie réponse">
                 <input type="submit" value="Confirmer" class="btn btn-primary">
             </form>
         </div>
@@ -43,6 +50,7 @@
 {% endif %}
 
     {% if winner %}
+    {% if exist %}
     <div class="container">
         <div>Le gagnant est : </div>
         <img src="{{winner.pdp}}" alt="">
@@ -50,6 +58,12 @@
 
         <div><p>Son commentaire : {{winner.commentaire}}</p></div>
     </div>
+    {% else %}
+    <div>
+        <font color="red">Verifier bien que la publication est public provenant d'une page</font>
+    </div>
+    {% endif %}
+
 {%endif%}
 
 

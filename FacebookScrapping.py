@@ -34,6 +34,9 @@ class User:
         )
     def __repr__(self):
         return self.nom
+    def exist(self):
+        print('exist sa tsia ?')
+        return self.nom != '' 
         
 
 login_url = 'https://mbasic.facebook.com/login'

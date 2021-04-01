@@ -11,6 +11,7 @@ def index():
 
 @app.route('/tirage', methods=['POST', 'GET'])
 def tirage():
+    exist = False
     print(request.args)
     
     url_pub = request.args['post_url']
@@ -24,21 +25,26 @@ def tirage():
         if keyword.lower() in comm['comments'].lower():
             final_rslt.append(comm)
     print('result len', len(final_rslt))
-
-    winner = random.choice(final_rslt)
-    
+    post = {}   
     w = User()
-    w = w.fromJson(winner)
+    if len(final_rslt) > 0:
+        winner = random.choice(final_rslt)
+
+        w = w.fromJson(winner)
+        
+        print('Winner', w)
+
+        post = getFbPost(url_pub)
+        exist = True
+        
+        if w.profil_links != '': w.pdp = getProfilPhoto('http://mbasic.facebook.com'+w.profil_links)
+    else: winner = None
     
-    print('Winner', w)
-
-    post = getFbPost(url_pub)
     
-    w.pdp = getProfilPhoto('http://mbasic.facebook.com'+w.profil_links)
-    print(w.pdp)
+    # print(w.pdp)
 
 
-    return render_template('index.html', winner = w, post=post)
+    return render_template('index.html', winner = w, post=post, exist=exist)
     
 @app.route('/tirage/api', methods=['GET'])
 def tirage_api():

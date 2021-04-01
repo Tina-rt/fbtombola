@@ -21,7 +21,10 @@
     margin-inline: 10%;
 }
 
-
+.description{
+    /*padding-top: 40px;*/
+    padding:40px 40px 0px 40px;
+}
 
 .form form input{
     margin: 10px;
