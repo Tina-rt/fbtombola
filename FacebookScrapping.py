@@ -137,7 +137,9 @@ class FacebookPostScrapping:
                     try:
                         if 'photos' in a['href']:
                             fb_url = 'https://mbasic.facebook.com'+a['href']
+                            break
                     except: pass
+                print(fb_url)
             if 'photos' not in fb_url and 'post' not in fb_url:
                 return []
                         
@@ -165,6 +167,7 @@ class FacebookPostScrapping:
                         ch2 = list(ch1.children)[0]
                         aut_link = list(ch2.children)[0]['href']
                     except:
+                        aut_link = ''
                         pass
 
                     
