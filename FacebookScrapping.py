@@ -132,6 +132,7 @@ class FacebookPostScrapping:
                 soup = BeautifulSoup(page.content, "html.parser")
 
                 img_ = soup.find_all('a',)
+                print("image lenght %s "%len(img_))
                 for a in img_:
                     try:
                         if 'photos' in a['href']:
