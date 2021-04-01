@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Tirage Facebook</title>
+    
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='{{url_for("static", filename="css/index.css")}}'>
+    <link rel='stylesheet' type='text/css' media='screen' href='{{url_for("static", filename="css/bootstrap.min.css")}}'>
+</head>
+
+<body>
+
+    <nav class="container-fluid banniere">
+        <div class="  ">
+            <h1 class="title">Facebook Tombola !</h1>
+        </div>
+    </nav>
+
+    <div class="container form-article">
+        <div class="form">
+            <form action="/tirage/api">
+                <input type="text" name="post_url" id="post_url" class="form-control" placeholder="Url de votre publication">
+                <input type="text" name="answer" id="answer" class="form-control" placeholder="Un mot contenue dans la vraie réponse">
+                <input type="submit" value="Confirmer" class="btn btn-primary">
+            </form>
+        </div>
+    </div>
+{% if post %}
+<div class="container">
+    <p>
+        <h3>Votre publication</h3>
+    </p>
+    
+    <div>
+        <h4>{{post['actor']}}</h4>
+        <p>{{post['content']}}</p>
+    </div>
+</div>
+
+{% endif %}
+
+    {% if winner %}
+    <div class="container">
+        <div>Le gagnant est : </div>
+        <img src="{{winner.pdp}}" alt="">
+        <a href="https://facebook.com{{winner.profil_links}}">{{winner.nom}}</a>
+
+        <div><p>Son commentaire : {{winner.commentaire}}</p></div>
+    </div>
+{%endif%}
+
+
+</body>
+
+</html>

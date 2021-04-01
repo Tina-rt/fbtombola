@@ -1,0 +1,31 @@
+@font-face{
+    font-family: 'Monserrat';
+    /* src: url('../fonts/Montserrat-Medium.ttf'); */
+    src: url('../fonts/Montserrat-Light.ttf');
+}
+
+.banniere{
+    
+    text-align: center;
+    background-color: cornflowerblue;
+    color: white;
+    padding: 5%;
+    font-family:'Monserrat';
+    
+}
+.form form{
+    padding: 20px;
+}
+
+.form-article{
+    margin-inline: 10%;
+}
+
+.form{
+    width: 50%;
+    
+}
+
+.form form input{
+    margin: 10px;
+}
