@@ -65,9 +65,10 @@ def getFbPost(link):
 
             img_ = soup.find_all('a',)
             for a in img_:
-                if 'photos' in a['href']:
-                    link = 'https://mbasic.facebook.com'+a['href']
-        
+                try:
+                    if 'photos' in a['href']:
+                        link = 'https://mbasic.facebook.com'+a['href']
+                except: pass
         print('Getting post detail at', link)
         
         # print(post)
@@ -126,13 +127,16 @@ class FacebookPostScrapping:
             
 
             if 'photos' not in fb_url:
+                print('no photos in fb url')
                 page = session.get(fb_url)
                 soup = BeautifulSoup(page.content, "html.parser")
 
                 img_ = soup.find_all('a',)
                 for a in img_:
-                    if 'photos' in a['href']:
-                        fb_url = 'https://mbasic.facebook.com'+a['href']
+                    try:
+                        if 'photos' in a['href']:
+                            fb_url = 'https://mbasic.facebook.com'+a['href']
+                    except: pass
             if 'photos' not in fb_url and 'post' not in fb_url:
                 return []
                         
