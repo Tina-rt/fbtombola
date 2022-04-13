@@ -122,7 +122,7 @@ class FacebookPostScrapping:
     
         with requests.Session() as session:
             post = session.post(login_url, data=payload)
-            # print(post)
+            print(post)
             
             result = {}
             list_com = []
@@ -154,6 +154,7 @@ class FacebookPostScrapping:
 
                 page = session.get(fb_url)
                 soup = BeautifulSoup(page.content, "html.parser")
+                print(len(soup))
                 
                 
                 comments_container = soup.find_all('div', id =re.compile('^\d+') )
